@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для Насті ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: linear-gradient(135deg, #ffe6f0, #ffd6eb);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    max-width:400px;
+    width:100%;
+    padding:20px;
+}
+
+.envelope{
+    font-size:110px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.envelope:hover{
+    transform:scale(1.1);
+}
+
+.card{
+    display:none;
+    background:white;
+    padding:15px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.photo{
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.title{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.text{
+    font-size:16px;
+    line-height:1.5;
+}
+
+.signature{
+    margin-top:15px;
+    font-weight:600;
+}
+
+.hearts{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    color:#ff4d88;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh); opacity:1;}
+    to{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="closed">
+<h2>Для Насті ❤️</h2>
+<p>Натисни щоб відкрити</p>
+<div class="envelope" onclick="openCard()">💌</div>
+</div>
+
+<div class="card" id="card">
+<img src="nastya.jpg" class="photo">
+<div class="title">Настю, моя любов ❤️</div>
+<div class="text">
+З тобою навіть звичайний день стає особливим.<br><br>
+Я люблю твою усмішку, твої очі і те,
+як ти робиш моє життя кращим.<br><br>
+Дякую що ти є.
+</div>
+<div class="signature">Твій Андрій 🤍</div>
+</div>
+
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+function openCard(){
+    document.getElementById("closed").style.display="none";
+    document.getElementById("card").style.display="block";
+    createHearts();
+}
+
+function createHearts(){
+    const container=document.getElementById("hearts");
+    for(let i=0;i<20;i++){
+        let heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(20+Math.random()*20)+"px";
+        heart.style.animationDuration=(3+Math.random()*3)+"s";
+        container.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+</script>
+
+</body>
+</html>
